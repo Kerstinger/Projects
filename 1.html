@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8"/>
+	<style type="text/css">
+	#click{
+		font-size: 100px;
+	}
+	#money{
+		font-size: 100px;
+	}
+	#upgrade{
+		font-size: 20px;
+	}
+    </style>
+</head>
+<body>
+<h2>Points per click:</h2><div id="cps">1</div>
+<h2>Your points:</h2><div id="money">0</div>
+<input type="button" id="click" value="Click!">
+<input type="button" id="upgrade" value="Buy upgrade +1 per click. Price: 20">
+<input type="button" id="upgrade1" value="Buy multiple upgrade x1.5 per click: Price 100">
+<script>
+var mone = Number(100);
+var buffplus = Number(0);
+var buffmult = Number(1);
+var price = Number(20);
+var price1 = Number(100);
+click.onclick = function (){
+	mone = mone + ((1 + buffplus) * buffmult);
+	mone = Math.floor(mone);
+	money.innerHTML = mone;
+}
+upgrade.onclick = function(){
+if(mone >= price){
+	mone -= price;
+	buffplus += 1;
+	price *= 2.2;
+	price = Math.floor(price);
+	money.innerHTML = mone;
+	cps.innerHTML = (1 + buffplus) * buffmult;
+	upgrade.value = "Buy upgrade +1 per click. Price: " + price;
+}else{
+	alert("Нехватает денег!");
+}
+}
+
+upgrade1.onclick = function(){
+	if(mone >= price1){
+		mone -= price1;
+		buffmult *= 1.5;
+		price1 *= 2.2;
+		price1 = Math.floor(price1);
+		money.innerHTML = mone;
+		cps.innerHTML = (1 + buffplus) * buffmult;
+		upgrade1.value = "Buy multiple upgrade x1.5 per click: Price " + price1;
+	}else{
+	alert("нехватает денег");
+}
+}
+
+</script>
+</body>
+</html>
+
+    
+    
